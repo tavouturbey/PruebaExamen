@@ -1,0 +1,52 @@
+package ExamenTema3;
+
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
+ public class esteSale{
+    private Avion avion;
+
+    @Before
+    public void setup() {
+        avion = new Avion();
+    }
+
+    @Test
+    public void testAcelerar() {
+        avion.acelerar();
+        Assert.assertEquals(50, avion.getVelocidad());
+    }
+
+    @Test
+    public void testFrenar() {
+        avion.frenar();
+        Assert.assertEquals(0, avion.getVelocidad());
+    }
+
+    @Test
+    public void testEstoyVolando() {
+        avion.acelerar();
+        avion.acelerar();
+        avion.acelerar();
+        avion.estoyVolando();
+        Assert.assertTrue(avion.isVolando());
+    }
+
+    @Test
+    public void testEstoyAterrizando() {
+        avion.acelerar();
+        avion.acelerar();
+        avion.acelerar();
+        avion.estoyVolando();
+        avion.frenar();
+        avion.frenar();
+        Assert.assertTrue(avion.estoyAterrizando());
+    }
+
+    @Test
+    public void testEstoyEnTierra() {
+        avion.frenar();
+        Assert.assertTrue(avion.estoyEnTierra());
+    }
+}
